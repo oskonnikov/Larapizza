@@ -196,7 +196,7 @@ class MainController extends Controller
             $currency_icon = '€';
         }
         $cart = $request->session()->get('cart');
-        if(empty($cart)){ 
+        if(empty($cart)){
             return redirect('/');
         }
         $selected_ids = array_keys($cart);
@@ -219,10 +219,10 @@ class MainController extends Controller
         $cart = $request->session()->get('cart');
         $currency = session()->get('cart_currency');
         $cart_total = $request->session()->get('cart_total');
-        if(Auth::user()->id > 0)
+        if(Auth::user())
         {
-            $post['email'] = Auth::user()->email;  
-        } 
+            $post['email'] = Auth::user()->email;
+        }
         $client = User::where('email', $post['email'])->first();
         $new_client = ['name' => 'user' . rand(500, 1000), 'email' => $post['email'], 'phone' => $post['phone'],
             'first_name' => $post['first_name'],
