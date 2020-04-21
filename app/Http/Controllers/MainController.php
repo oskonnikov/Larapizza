@@ -219,7 +219,7 @@ class MainController extends Controller
         $cart = $request->session()->get('cart');
         $currency = session()->get('cart_currency');
         $cart_total = $request->session()->get('cart_total');
-        if(Auth::user()->id > 0)
+        if(Auth::user())
         {
             $post['email'] = Auth::user()->email;  
         } 
