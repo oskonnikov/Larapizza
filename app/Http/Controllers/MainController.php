@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\History;
 use App\Orders;
 use App\Products;
 use App\User;
-use Auth;
+
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -196,7 +197,7 @@ class MainController extends Controller
             $currency_icon = '€';
         }
         $cart = $request->session()->get('cart');
-        if(empty($cart)){
+        if(empty($cart)){ 
             return redirect('/');
         }
         $selected_ids = array_keys($cart);
