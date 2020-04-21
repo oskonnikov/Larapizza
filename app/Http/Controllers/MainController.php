@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\History;
 use App\Orders;
 use App\Products;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -196,7 +196,7 @@ class MainController extends Controller
             $currency_icon = '€';
         }
         $cart = $request->session()->get('cart');
-        if(empty($cart)){ 
+        if(empty($cart)){
             return redirect('/');
         }
         $selected_ids = array_keys($cart);
@@ -219,16 +219,23 @@ class MainController extends Controller
         $cart = $request->session()->get('cart');
         $currency = session()->get('cart_currency');
         $cart_total = $request->session()->get('cart_total');
-        if(Auth::user())
-        {
-            $post['email'] = Auth::user()->email;  
-        } 
+        if(Auth::user()){
+            $post['email'] = Auth::user()->email;
+            $new_client = ['email' => $post['email'], 'phone' => $post['phone'],
+                'first_name' => $post['first_name'],
+                'last_name' => $post['last_name'],
+                'full_address' => $post['address_zip'] . ', ' . $post['street_address'] . ', ' . $post['address_misc'] . ', ' . $post['address_city'],
+            ];
+        }
+        else{
+            $new_client = ['name' => 'user' . rand(500, 1000), 'email' => $post['email'], 'phone' => $post['phone'],
+                'first_name' => $post['first_name'],
+                'last_name' => $post['last_name'],
+                'full_address' => $post['address_zip'] . ', ' . $post['street_address'] . ', ' . $post['address_misc'] . ', ' . $post['address_city'],
+            ];
+        }
         $client = User::where('email', $post['email'])->first();
-        $new_client = ['name' => 'user' . rand(500, 1000), 'email' => $post['email'], 'phone' => $post['phone'],
-            'first_name' => $post['first_name'],
-            'last_name' => $post['last_name'],
-            'full_address' => $post['address_zip'] . ', ' . $post['street_address'] . ', ' . $post['address_misc'] . ', ' . $post['address_city'],
-        ];
+
         $client_id = 0;
         if(!$client){
             $client_id = User::insertGetId($new_client);
