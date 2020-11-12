@@ -56,3 +56,30 @@ Route::get('/test', function (Request $request) {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/personal', 'AdminController@getPersonal');
+Route::get('/admin/personal/edit', 'AdminController@personalEdit');
+Route::post('/admin/personal/save', 'AdminController@personalSave');
+Route::get('/admin/users', 'AdminController@users');
+Route::get('/admin/users/add', 'AdminController@usersAdd');
+Route::get('/admin/users/edit/{id}', function($id){
+    return App::call('App\Http\Controllers\AdminController@usersEdit', ['id' => $id]);
+});
+Route::post('/admin/user/save', 'AdminController@userSave');
+Route::get('/admin/products', 'AdminController@getProducts');
+Route::get('/admin/products/edit/{id}', function($id){
+    return App::call('App\Http\Controllers\AdminController@productsEdit', ['id' => $id]);
+});
+Route::get('/admin/products/add', 'AdminController@productsAdd');
+Route::post('/admin/products/save', 'AdminController@productsSave');
+Route::get('/admin/orders', 'AdminController@getOrders');
+Route::get('/admin/order/{id}', function($id){
+    return App::call('App\Http\Controllers\AdminController@getOrderByID', ['id' => $id]);
+});
+Route::get('/admin/settings', 'AdminController@getSettings');
+Route::get('/admin/settings/add', 'AdminController@settingsAdd');
+Route::post('/admin/settings/save', 'AdminController@settingsSave');
+Route::get('/admin/settings/edit/{id}', function($id){
+    return App::call('App\Http\Controllers\AdminController@settingsEdit', ['id' => $id]);
+});
+

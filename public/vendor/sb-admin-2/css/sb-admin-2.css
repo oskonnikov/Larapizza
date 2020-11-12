@@ -17,7 +17,7 @@
   --pink: #e83e8c;
   --red: #e74a3b;
   --orange: #fd7e14;
-  --yellow: #f6c23e;
+  --yellow: #9D3100;
   --green: #1cc88a;
   --teal: #20c9a6;
   --cyan: #36b9cc;
@@ -28,7 +28,7 @@
   --secondary: #858796;
   --success: #1cc88a;
   --info: #36b9cc;
-  --warning: #f6c23e;
+  --warning: #9D3100;
   --danger: #e74a3b;
   --light: #f8f9fc;
   --dark: #5a5c69;
@@ -2525,8 +2525,8 @@ fieldset:disabled a.btn {
 
 .btn-warning {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color: #9D3100;
+  border-color: #9D3100;
 }
 
 .btn-warning:hover {
@@ -2544,8 +2544,8 @@ fieldset:disabled a.btn {
 
 .btn-warning.disabled, .btn-warning:disabled {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color: #9D3100;
+  border-color: #9D3100;
 }
 
 .btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active,
@@ -2800,14 +2800,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-warning {
-  color: #f6c23e;
-  border-color: #f6c23e;
+  color: #9D3100;
+  border-color: #9D3100;
 }
 
 .btn-outline-warning:hover {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color: #9D3100;
+  border-color: #9D3100;
 }
 
 .btn-outline-warning:focus, .btn-outline-warning.focus {
@@ -2815,15 +2815,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-warning.disabled, .btn-outline-warning:disabled {
-  color: #f6c23e;
+  color: #9D3100;
   background-color: transparent;
 }
 
 .btn-outline-warning:not(:disabled):not(.disabled):active, .btn-outline-warning:not(:disabled):not(.disabled).active,
 .show > .btn-outline-warning.dropdown-toggle {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color: #9D3100;
+  border-color: #9D3100;
 }
 
 .btn-outline-warning:not(:disabled):not(.disabled):active:focus, .btn-outline-warning:not(:disabled):not(.disabled).active:focus,
@@ -4928,7 +4928,7 @@ a.badge-info:focus, a.badge-info.focus {
 
 .badge-warning {
   color: #fff;
-  background-color: #f6c23e;
+  background-color: #9D3100;
 }
 
 a.badge-warning:hover, a.badge-warning:focus {
@@ -6431,7 +6431,7 @@ button.bg-info:focus {
 }
 
 .bg-warning {
-  background-color: #f6c23e !important;
+  background-color: #9D3100 !important;
 }
 
 a.bg-warning:hover, a.bg-warning:focus,
@@ -6535,7 +6535,7 @@ button.bg-dark:focus {
 }
 
 .border-warning {
-  border-color: #f6c23e !important;
+  border-color: #9D3100 !important;
 }
 
 .border-danger {
@@ -9604,7 +9604,7 @@ a.text-info:hover, a.text-info:focus {
 }
 
 .text-warning {
-  color: #f6c23e !important;
+  color: #9D3100 !important;
 }
 
 a.text-warning:hover, a.text-warning:focus {
@@ -9898,8 +9898,8 @@ a:focus {
 }
 
 .bg-gradient-warning {
-  background-color: #f6c23e;
-  background-image: linear-gradient(180deg, #f6c23e 10%, #dda20a 100%);
+  background-color: #9D3100;
+  background-image: linear-gradient(180deg, #9D3100 10%, #dda20a 100%);
   background-size: cover;
 }
 
@@ -10047,11 +10047,11 @@ a:focus {
 }
 
 .border-left-warning {
-  border-left: 0.25rem solid #f6c23e !important;
+  border-left: 0.25rem solid #9D3100 !important;
 }
 
 .border-bottom-warning {
-  border-bottom: 0.25rem solid #f6c23e !important;
+  border-bottom: 0.25rem solid #9D3100 !important;
 }
 
 .border-left-danger {
@@ -11224,4 +11224,69 @@ body.sidebar-toggled footer.sticky-footer {
 
 .help-block {
   color: red;
+}
+
+.file_upload{
+  /*display: block;*/
+  position:relative;
+  overflow:hidden;
+  font-size:1em; /* example */
+  height:2em; /* example */
+  line-height:2em /* the same as height */
+}
+.file_upload_small{
+  height:28px !important;
+}
+.file_upload .button, .file_upload > mark{
+  display:block;
+  cursor:pointer /* example */
+}
+.file_upload .button{
+  float:right;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  /*    width: 8em; !* example *!*/
+  height:90%;
+  text-align:center; /* example */
+  display:inline-block;
+  vertical-align:middle;
+  line-height:normal;
+}
+.file_upload_big .button{
+  height:100%;
+}
+.file_upload_compact .button{
+  height:100% !important;
+}
+.file_upload_compact{
+  height:32px !important;
+  margin-bottom:0px;
+}
+.browse-button{
+  padding:4px !important;
+}
+@media only screen and ( max-width:500px ){
+  .file_upload > mark{
+    display:none
+  }
+  .file_upload .button{
+    width:100%
+  }
+}
+.file_upload input[type=file]{
+  position:absolute;
+  top:0;
+  opacity:0
+}
+.file_upload{
+  box-shadow:none;
+  height:34px;
+}
+.file_upload.focus{
+  box-shadow:0 0 5px rgba(0, 30, 255, 0.4)
+}
+
+.product-preview img{
+  width:auto;
+  height:14rem;
 }
