@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Settings;
 use App\History;
 use App\Orders;
 use App\Products;
@@ -29,12 +30,13 @@ class MainController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
+        $products = Products::where('product_active', 1)->get();
         $currency = session()->get('cart_currency');
         $factor = 1;
         $currency_icon = '$';
         if($currency == 'EUR'){
-            $factor = 0.92;
+            $factor_object = Settings::where('name', 'dollar_euro_factor')->first();
+            $factor = !$factor_object ? 0.92 : $factor_object->value;
             $currency_icon = '€';
         }
         return view('index', ['products' => $products, 'factor' => $factor, 'currency_icon' => $currency_icon]);
@@ -48,7 +50,8 @@ class MainController extends Controller
         $currency = session()->get('cart_currency');
         $factor = 1;
         if($currency == 'EUR'){
-            $factor = 0.92;
+            $factor_object = Settings::where('name', 'dollar_euro_factor')->first();
+            $factor = !$factor_object ? 0.92 : $factor_object->value;
         }
         $product['product_price'] = $product['product_price'] * $factor;
         if(!$request->session()->has('cart.' . $post['data-product'] . '.price')){
@@ -147,7 +150,8 @@ class MainController extends Controller
         $currency_icon = '$';
         $currency = session()->get('cart_currency');
         if($currency == 'EUR'){
-            $factor = 0.92;
+            $factor_object = Settings::where('name', 'dollar_euro_factor')->first();
+            $factor = !$factor_object ? 0.92 : $factor_object->value;
             $currency_icon = '€';
         }
         $cart = $request->session()->get('cart');
@@ -193,7 +197,8 @@ class MainController extends Controller
         $currency_icon = '$';
         $currency = session()->get('cart_currency');
         if($currency == 'EUR'){
-            $factor = 0.92;
+            $factor_object = Settings::where('name', 'dollar_euro_factor')->first();
+            $factor = !$factor_object ? 0.92 : $factor_object->value;
             $currency_icon = '€';
         }
         $cart = $request->session()->get('cart');
@@ -262,22 +267,6 @@ class MainController extends Controller
         $request->session()->save();
         $result['status'] = 0;
         return json_encode($result);
-    }
-
-
-    public function test(Request $request)
-    {
-        //$cart = $request->session()->get('cart');
-        // $request->session()->forget('cart');
-        $cart = $request->session()->all();
-        echo '<pre>';
-        print_r($cart);
-        echo '</pre>';
-        echo 'tested';
-        /*         $insert = ['product_name' => 'TestPizza', 'product_price' => rand(500, 1000)];
-                Products::insert($insert);
-                $products = Products::all();
-                return view('cart', ['cart' => $cart]); */
     }
 
 }

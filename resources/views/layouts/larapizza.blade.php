@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
@@ -62,30 +63,30 @@
                 <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
                 @if (Auth::guest())
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                       aria-expanded="false">My Larapizza</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="{{ url('/login') }}">Login</a>
-                        <a class="dropdown-item" href="{{ url('/register') }}">Register</a>
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                           aria-expanded="false">My Larapizza</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="{{ url('/login') }}">Login</a>
+                            <a class="dropdown-item" href="{{ url('/register') }}">Register</a>
+                        </div>
+                    </li>
                 @else
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                       aria-expanded="false"> {{ Auth::user()->name }}</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="/home">My Personal Page</a>
-                        <a class="dropdown-item" href="{{ url('/logout') }}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                           aria-expanded="false"> {{ Auth::user()->name }}</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="/home">My Personal Page</a>
+                            <a class="dropdown-item" href="{{ url('/logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
 
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </div>
-                </li>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                    </li>
                 @endif
 
                 <li class="nav-item cta cta-colored"><a href="/cart" class="nav-link">Cart | <span
@@ -99,13 +100,13 @@
 
 <footer class="ftco-footer ftco-section">
     <div class="container">
-      <!--   <div class="row">
-            <div class="mouse">
-                <a href="#" class="mouse-icon">
-                    <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
-                </a>
-            </div>
-        </div> -->
+        <!--   <div class="row">
+              <div class="mouse">
+                  <a href="#" class="mouse-icon">
+                      <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                  </a>
+              </div>
+          </div> -->
 
         <div class="row">
             <div class="col-md-12 text-center">
@@ -134,19 +135,19 @@
     </svg>
 </div>
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="/js/popper.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/jquery.easing.1.3.js"></script>
-<script src="/js/jquery.waypoints.min.js"></script>
-<script src="/js/jquery.stellar.min.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/jquery.magnific-popup.min.js"></script>
-<script src="/js/aos.js"></script>
-<script src="/js/jquery.animateNumber.min.js"></script>
-<script src="/js/bootstrap-datepicker.js"></script>
-<script src="/js/scrollax.min.js"></script>
-<script src="/js/main.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js"></script>
+<script src="/vendor/popper/popper.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/vendor/jquery-waypoints/jquery.waypoints.min.js"></script>
+<script src="/vendor/jquery-stellar/jquery.stellar.min.js"></script>
+<script src="/vendor/owl-carousel/owl.carousel.min.js"></script>
+<script src="/vendor/jquery-magnific/jquery.magnific-popup.min.js"></script>
+<script src="/vendor/etc/aos.js"></script>
+<script src="/vendor/jquery-animate-number/jquery.animateNumber.min.js"></script>
+<script src="/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="/vendor/etc/scrollax.min.js"></script>
+<script src="/vendor/larapizza/main.js"></script>
 </body>
 </html>

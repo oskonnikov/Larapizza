@@ -24,6 +24,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'permissions'
     ];
+
+    public function isSuperAdmin()
+    {
+        if($this->id == 1 && $this->permissions == 'admin') {
+            return true;
+        }
+
+        return false;
+    }
 }
