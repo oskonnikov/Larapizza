@@ -12,4 +12,8 @@ Installing:
 6. first user can be admin if you set permissions column to admin of user with id 1
 7. admin panel can be opened by /admin or press button on /home page
 
+Test user with admin privileges: 
+Email: info@xdevops.ru
+Password: larapizzatesting
+
 App is ready
